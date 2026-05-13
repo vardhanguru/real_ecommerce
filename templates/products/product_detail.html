@@ -1,0 +1,494 @@
+<!-- templates/products/details.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="details-page">
+
+    <!-- =========================
+            PRODUCT SECTION
+    ========================== -->
+
+    <div class="product-details-card">
+
+        <!-- LEFT IMAGE SECTION -->
+
+        <div class="product-image-section">
+            {{product.image}}
+
+            <div class="main-image">
+                <img src="{% static product.image %}" alt="{{ product.name }}">
+            </div>
+
+            <!-- OPTIONAL THUMBNAILS -->
+
+            <!-- <div class="thumbnail-container">
+
+                <div class="thumb">
+                    <img src="{% static product.image %}" alt="">
+                </div>
+
+                <div class="thumb">
+                    <img src="{% static product.image %}" alt="">
+                </div>
+
+                <div class="thumb">
+                    <img src="{% static product.image %}" alt="">
+                </div>
+
+            </div> -->
+
+        </div>
+
+        <!-- RIGHT CONTENT SECTION -->
+
+        <div class="product-info-section">
+
+            <p class="product-category">
+                Premium Collection
+            </p>
+
+            <h1 class="product-name">
+                {{ product.name }}
+            </h1>
+
+            <div class="rating-stock-row">
+
+                <div class="rating">
+                    ⭐ ⭐ ⭐ ⭐ ☆
+                    <span>(4.2 Reviews)</span>
+                </div>
+
+                <div class="stock available">
+                    In Stock
+                </div>
+
+            </div>
+
+            <h2 class="product-price">
+                ₹ {{ product.price }}
+            </h2>
+
+            <p class="product-description">
+                {{ product.description }}
+            </p>
+
+            <!-- FEATURES -->
+
+            <div class="features-section">
+
+                <h3>Highlights</h3>
+
+                <ul>
+                    <li>✔ Premium quality material</li>
+                    <li>✔ Fast delivery available</li>
+                    <li>✔ Easy return policy</li>
+                    <li>✔ Secure payment support</li>
+                </ul>
+
+            </div>
+
+            <!-- QUANTITY -->
+
+            <div class="quantity-section">
+
+                <label>Quantity</label>
+
+                <div class="quantity-box">
+
+                    <button type="button">-</button>
+
+                    <input type="number" value="1" min="1">
+
+                    <button type="button">+</button>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="action-buttons">
+
+                <a href="#" class="add-cart-btn">
+                    Add To Cart
+                </a>
+
+                <a href="#" class="buy-now-btn">
+                    Buy Now
+                </a>
+
+                <a href="#" class="wishlist-btn">
+                    ♡ Wishlist
+                </a>
+
+            </div>
+
+            <!-- EXTRA INFO -->
+
+            <div class="extra-info">
+
+                <div class="info-box">
+                    🚚 Free Shipping
+                </div>
+
+                <div class="info-box">
+                    🔒 Secure Checkout
+                </div>
+
+                <div class="info-box">
+                    🔄 7 Days Return
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+
+{% block css %}
+
+<style>
+
+    .details-page{
+        padding:20px 0;
+    }
+
+    /* =========================
+        MAIN CARD
+    ========================== */
+
+    .product-details-card{
+
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:40px;
+
+        background:rgba(255,255,255,0.22);
+
+        border:1px solid rgba(255,255,255,0.25);
+
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+
+        border-radius:35px;
+
+        padding:35px;
+
+        box-shadow:
+            0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    /* =========================
+        IMAGE SECTION
+    ========================== */
+
+    .main-image{
+        width:100%;
+        height:520px;
+
+        overflow:hidden;
+
+        border-radius:25px;
+
+        background:#f1f1f1;
+    }
+
+    .main-image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .thumbnail-container{
+        display:flex;
+        gap:15px;
+
+        margin-top:18px;
+    }
+
+    .thumb{
+        width:90px;
+        height:90px;
+
+        overflow:hidden;
+
+        border-radius:18px;
+
+        background:rgba(255,255,255,0.35);
+
+        border:1px solid rgba(255,255,255,0.3);
+
+        cursor:pointer;
+    }
+
+    .thumb img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    /* =========================
+        INFO SECTION
+    ========================== */
+
+    .product-category{
+        color:#555;
+        font-size:0.95rem;
+
+        margin-bottom:10px;
+    }
+
+    .product-name{
+        font-size:3rem;
+        color:#111;
+
+        margin-bottom:18px;
+    }
+
+    .rating-stock-row{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        margin-bottom:20px;
+    }
+
+    .rating{
+        color:#444;
+        font-size:1rem;
+    }
+
+    .rating span{
+        color:#777;
+        margin-left:8px;
+    }
+
+    .stock{
+        padding:8px 14px;
+
+        border-radius:12px;
+
+        font-size:0.9rem;
+        font-weight:500;
+    }
+
+    .available{
+        background:rgba(0,255,100,0.12);
+        color:#15803d;
+    }
+
+    .product-price{
+        font-size:2.3rem;
+        color:#111;
+
+        margin-bottom:24px;
+    }
+
+    .product-description{
+        color:#444;
+
+        line-height:1.9;
+
+        margin-bottom:30px;
+    }
+
+    /* =========================
+        FEATURES
+    ========================== */
+
+    .features-section{
+        margin-bottom:30px;
+    }
+
+    .features-section h3{
+        margin-bottom:15px;
+        color:#111;
+    }
+
+    .features-section ul{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .features-section li{
+        color:#444;
+    }
+
+    /* =========================
+        QUANTITY
+    ========================== */
+
+    .quantity-section{
+        margin-bottom:30px;
+    }
+
+    .quantity-section label{
+        display:block;
+        margin-bottom:12px;
+
+        font-weight:600;
+    }
+
+    .quantity-box{
+        display:flex;
+        align-items:center;
+        gap:12px;
+    }
+
+    .quantity-box button{
+        width:42px;
+        height:42px;
+
+        border:none;
+
+        border-radius:12px;
+
+        background:#111;
+        color:white;
+
+        cursor:pointer;
+
+        font-size:1.1rem;
+    }
+
+    .quantity-box input{
+        width:80px;
+        height:42px;
+
+        border:none;
+
+        border-radius:12px;
+
+        text-align:center;
+
+        background:rgba(255,255,255,0.45);
+
+        outline:none;
+    }
+
+    /* =========================
+        BUTTONS
+    ========================== */
+
+    .action-buttons{
+        display:flex;
+        gap:18px;
+
+        margin-bottom:35px;
+    }
+
+    .add-cart-btn,
+    .buy-now-btn,
+    .wishlist-btn{
+
+        padding:15px 24px;
+
+        border-radius:16px;
+
+        font-weight:500;
+
+        transition:0.3s ease;
+    }
+
+    .add-cart-btn{
+        background:#111;
+        color:white;
+    }
+
+    .buy-now-btn{
+        background:#333;
+        color:white;
+    }
+
+    .wishlist-btn{
+        background:rgba(255,255,255,0.35);
+
+        border:1px solid rgba(255,255,255,0.3);
+
+        color:#111;
+    }
+
+    .add-cart-btn:hover,
+    .buy-now-btn:hover,
+    .wishlist-btn:hover{
+        transform:translateY(-3px);
+    }
+
+    /* =========================
+        EXTRA INFO
+    ========================== */
+
+    .extra-info{
+        display:flex;
+        gap:18px;
+        flex-wrap:wrap;
+    }
+
+    .info-box{
+
+        padding:16px 20px;
+
+        border-radius:18px;
+
+        background:rgba(255,255,255,0.3);
+
+        border:1px solid rgba(255,255,255,0.25);
+
+        color:#333;
+
+        font-size:0.95rem;
+    }
+
+    /* =========================
+        RESPONSIVE
+    ========================== */
+
+    @media(max-width:992px){
+
+        .product-details-card{
+            grid-template-columns:1fr;
+        }
+
+        .product-name{
+            font-size:2.2rem;
+        }
+
+        .main-image{
+            height:400px;
+        }
+    }
+
+    @media(max-width:768px){
+
+        .action-buttons{
+            flex-direction:column;
+        }
+
+        .extra-info{
+            flex-direction:column;
+        }
+
+        .rating-stock-row{
+            flex-direction:column;
+            align-items:flex-start;
+            gap:12px;
+        }
+    }
+
+</style>
+
+{% endblock %}
