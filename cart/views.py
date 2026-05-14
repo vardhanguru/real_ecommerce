@@ -18,6 +18,7 @@ def view_cart_items(request):
             for item in cartitems:
                 print(item.quantity)
                 print(item.product.name)
+                item.product.image = str(item.product.image)[7:]   #static/images/iphone.jpg
                 print(item.product.description)
                 print(item.product.price)
                 print("------------------------------------------------")
@@ -49,4 +50,18 @@ def add_to_cart(request, product_id):
         return redirect('cart:view_cart_items')
     
 
+    return redirect('cart:view_cart_items')
+
+def remove_quantity(request, product_id):
+    cartItem = CartItem.objects.get(product_id=product_id)
+    cartItem.quantity -= 1
+    cartItem.save()
+    if cartItem.quantity==0:
+        cartItem.delete()
+
+    return redirect('cart:view_cart_items')
+
+def remove_product(request, product_id):
+    cartItem = CartItem.objects.get(product_id=product_id)
+    cartItem.delete()
     return redirect('cart:view_cart_items')

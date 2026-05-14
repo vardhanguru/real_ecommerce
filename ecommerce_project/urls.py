@@ -29,5 +29,6 @@ urlpatterns = [
     path('getsession/', home),
     path('deletesession/', delete_session),
     path('cart/', include('cart.urls')),
+    path('orders/', include('orders.urls')),
 ]
 

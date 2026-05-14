@@ -11,6 +11,7 @@ class UserDetails(models.Model):
     password = models.CharField()
     last_login = models.DateTimeField(null=False, default=timezone.now)
     role = models.CharField(default='user')
+    phone_number = models.CharField(null=True)
 
     def save(self, *args, **kwargs):
         if not self.password.startswith("pbk"):

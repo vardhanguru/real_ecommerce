@@ -130,16 +130,17 @@
                             </p>
 
                             <div class="quantity-box">
-
-                                <button>-</button>
+                                <a href="{% url 'cart:remove_quantity' product.id %}"><button>-</button></a>
+                                
 
                                 <input
                                     type="number"
                                     value="{{ quantity }}"
                                     min="1"
                                 >
+                                <a href = "{% url 'cart:add_to_cart' product.id %}"><button>+</button></a>
 
-                                <button>+</button>
+                                
 
                             </div>
 
@@ -169,7 +170,7 @@
                                 Save Later
                             </a>
 
-                            <a href="#" class="remove-btn">
+                            <a href="{% url 'cart:remove_product' product.id %}" class="remove-btn">
                                 Remove
                             </a>
 
