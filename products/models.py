@@ -16,7 +16,7 @@ class Products(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.FloatField()
     quantity = models.FloatField(default = 1)
-    image = models.ImageField(upload_to='static/images')
+    image = models.ImageField(upload_to='staticfiles/images')
     created_at = models.DateTimeField(auto_now_add=True)
     is_available = models.BooleanField(default = True)
 
