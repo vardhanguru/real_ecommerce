@@ -8,7 +8,7 @@ def all_products(request):
     products = Products.objects.all()
     print(request.session.get('id'))
     for product in products:
-        product.image = str(product.image)[7:]
+        product.image = str(product.image)[13:]
     data = {'products': products}
 
     return render(request, 'base.html', context=data)
@@ -16,7 +16,7 @@ def all_products(request):
 
 def product_details(request, id):
     product_details = Products.objects.get(id=id)
-    product_details.image = str(product_details.image)[7:]
+    product_details.image = str(product_details.image)[13:]
     data = {'product':product_details}
 
     return render(request, 'products/product_detail.html', context = data)

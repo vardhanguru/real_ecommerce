@@ -18,7 +18,7 @@ def view_cart_items(request):
             for item in cartitems:
                 print(item.quantity)
                 print(item.product.name)
-                item.product.image = str(item.product.image)[7:]   #static/images/iphone.jpg
+                item.product.image = str(item.product.image)[13:]   #static/images/iphone.jpg
                 print(item.product.description)
                 print(item.product.price)
                 print("------------------------------------------------")
